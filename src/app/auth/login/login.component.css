@@ -11,7 +11,40 @@
     padding: 20px;
     background-color: white;
   }
+
+  .login-img {
+    height: auto;
+    width: 150px;
+    margin: auto;
+  }
   
   .card-title {
     text-align: center;
+    margin-top: 10px;
+  }
+
+  .login-button {
+    width: 100%;
+    background-color: black !important;
+  }
+
+  .login-button:hover {
+    background-color: rgb(56, 56, 56) !important;
+  }
+
+  .mat-mdc-form-field {
+    width: 100% !important;
+  }
+
+  .register-text {
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+    display: block;
+  }
+
+  .login-icon {
+    font-size: 48px;
+    height: 48px;
+    width: 48px;
   }
