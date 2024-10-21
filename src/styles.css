@@ -2,3 +2,13 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+body {
+    background-color: rgb(228, 255, 182);
+}
+
+
+.mat-grid-tile-content {
+    align-items: start !important;
+}

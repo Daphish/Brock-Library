@@ -1,3 +1,25 @@
-<mat-toolbar>
-    <span>Título</span>
+<div class="spacer"></div>
+<mat-toolbar class="navbar">
+    <mat-toolbar-row class="navbar-row">
+        <div>
+            <img src="/logo.png">
+        </div>
+        <div>
+            <button mat-icon-button aria-label="botón de perfil" style="margin-right: 10px;">
+                <mat-icon class="nav-icon">account_circle</mat-icon>
+            </button>
+            <button mat-icon-button aria-label="botón de carrito">
+                <mat-icon class="nav-icon" style="padding-left: 4px;">shopping_cart</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="navbar-row" style="box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);">
+        <mat-form-field class="search">
+            <input matInput type="search">
+            <button matSuffix mat-icon-button aria-label="SearchBar">
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-form-field>
+    </mat-toolbar-row>
 </mat-toolbar>
+<router-outlet></router-outlet>
