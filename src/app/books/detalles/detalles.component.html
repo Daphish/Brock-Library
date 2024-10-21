@@ -1,1 +1,37 @@
-<p>detalles works!</p>
+<mat-grid-list cols="5" gutterSize="10px" rowHeight="700px" class="content">
+    <mat-grid-tile [colspan]="3">
+        <mat-card class="book-card">
+            <div class="book-content">
+                <img class="book-image" src="/pruebalibro.jpg" alt="Libro">
+              <div class="book-info">
+                <mat-card-header>
+                  <mat-card-title>Título del Libro</mat-card-title>
+                  <mat-card-subtitle>Autor del Libro</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quos debitis magnam quam excepturi nostrum animi dolor voluptas repudiandae? Totam, facere dolores. Adipisci omnis tempore magnam eum pariatur ipsa animi.
+                  </p>
+                </mat-card-content>
+              </div>
+            </div>
+          </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2">
+        <mat-card class="price-card">
+            <div class="price-amount">
+                <span>Precio:</span>
+                <span>$200</span>
+            </div>
+            <div>
+                <span>Cantidad:</span>
+                <div class="book-amount">
+                    <span>-</span>
+                    <div class="book-number">0</div>
+                    <span>+</span>
+                </div>
+            </div>
+            <button mat-flat-button class="price-button">Agregar al carrito</button>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

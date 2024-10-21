@@ -12,3 +12,7 @@ body {
 .mat-grid-tile-content {
     align-items: start !important;
 }
+
+.mat-mdc-card-header{
+    padding: 0 !important;
+}
