@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar'
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { ToolbarModule } from 'primeng/toolbar';
+import { AvatarModule } from 'primeng/avatar';
 
 @Component({
   selector: 'app-main-layout',
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, RouterOutlet, RouterLink],
+  imports: [RouterOutlet, ToolbarModule, AvatarModule, RouterLink],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.css'
 })

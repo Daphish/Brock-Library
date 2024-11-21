@@ -1,25 +1,22 @@
-<div class="spacer"></div>
-<mat-toolbar class="navbar">
-    <mat-toolbar-row class="navbar-row">
-        <div>
-            <a [routerLink]="['/inicio']"><img src="/logo.png"></a>
-        </div>
-        <div>
-            <button mat-icon-button aria-label="botón de perfil" style="margin-right: 10px;">
-                <a [routerLink]="['/auth/login']"><mat-icon class="nav-icon">account_circle</mat-icon></a>
-            </button>
-            <button mat-icon-button aria-label="botón de carrito">
-                <mat-icon class="nav-icon" style="padding-left: 4px;">shopping_cart</mat-icon>
-            </button>
-        </div>
-    </mat-toolbar-row>
-    <mat-toolbar-row class="navbar-row" style="box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);">
-        <mat-form-field class="search">
-            <input matInput type="search" placeholder="¿Qué estás buscando?">
-            <button matSuffix mat-icon-button aria-label="SearchBar" class="searchbar-icon">
-                <mat-icon>search</mat-icon>
-            </button>
-        </mat-form-field>
-    </mat-toolbar-row>
-</mat-toolbar>
+<div class="card">
+    <p-toolbar
+        styleClass="bg-green-400 shadow-8">
+        <ng-template pTemplate="start">
+            <img class="logo" src="logo.png" />
+        </ng-template>
+        <ng-template pTemplate="end">
+            <div class="flex flex-wrap align-items-center gap-3">
+                <button class="p-link inline-flex justify-content-center align-items-center text-900 hover:text-green-400 h-3rem w-3rem border-circle hover:bg-black-alpha-90 transition-all transition-duration-200">
+                    <i class="pi pi-home text-2xl"></i>
+                </button>
+                <button class="p-link inline-flex justify-content-center align-items-center text-900 hover:text-green-400 h-3rem w-3rem border-circle hover:bg-black-alpha-90 transition-all transition-duration-200" [routerLink]="['auth/login']">
+                        <i class="pi pi-user text-2xl"></i>
+                </button>
+               <button class="p-link inline-flex justify-content-center align-items-center text-900 hover:text-green-400 h-3rem w-3rem border-circle hover:bg-black-alpha-90 transition-all transition-duration-200">
+                    <i class="pi pi-shopping-cart text-2xl"></i>
+                </button>
+            </div>
+        </ng-template>
+    </p-toolbar>
+    </div> 
 <router-outlet></router-outlet>

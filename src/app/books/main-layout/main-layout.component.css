@@ -1,68 +1,9 @@
-.spacer {
-    height: 120px;
-    margin-bottom: 10px;
+::ng-deep .p-toolbar{
+    border: none;
+    padding: 10px;
 }
 
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-  }
-
-.navbar-row {
-    justify-content: space-between;
-    background-color: rgb(228, 255, 182);
-    height: 60px;
-    padding-left: 5vw;
-    padding-right: 5vw;
-}
-
-.navbar-row img {
+.logo {
+    width: auto;
     height: 50px;
 }
-
-.navbar-row button {
-    padding: 0;
-}
-
-.nav-icon {
-    color: rgb(255, 92, 92);
-    font-size: 36px; 
-    width: 36px;
-    height: 36px;
-    transition: box-shadow 0.1s ease-in-out, background-color 0.3s ease-in-out;
-    border-radius: 20%;
-}
-
-.nav-icon:hover {
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
-    background-color: rgb(29, 29, 29);
-    cursor: pointer;
-}
-
-.search {
-    width: 100%;
-    margin-top: 10px;
-}
-
-.search input {
-    margin-top: 0;
-    background-color: rgb(250, 250, 250);
-}
-
-.mdc-icon-button:hover {
-    background-color: transparent !important;
-    cursor: default !important;
-}
-
-.searchbar-icon {
-    color: rgb(255, 92, 92);;
-}
-
-.searchbar-icon:hover {
-    background-color: rgb(29, 29, 29);
-    cursor: pointer !important;
-}
-
