@@ -1,7 +1,14 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-
 body {
     background-color: var(--green-200);
+}
+
+.custom-shadow:focus {
+    box-shadow: 
+    3px 3px 5px rgba(255, 61, 50, 0.5),
+   -3px 3px 5px rgba(255, 61, 50, 0.5),
+    3px -3px 5px rgba(255, 61, 50, 0.5),
+   -3px -3px 5px rgba(255, 61, 50, 0.5) !important;
 }

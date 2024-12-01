@@ -1,1 +1,27 @@
-<div>Inicio</div>
+<div class="w-screen flex align-items-center flex-column pb-3">
+    <div class="mt-5 w-10">
+        <div class="w-full text-center font-semibold text-2xl md:text-5xl">Somos el sitio número 1 en venta de libros</div>
+        <div class="w-full text-center text-base border-bottom-1 pb-3 border-black-alpha-30">Tenemos cualquier libro que puedas imaginar. ¡Ven y echa un vistazo a nuestra colección!</div>
+    </div>
+    <div class="grid mt-3 w-10 justify-content-center">
+        <div *ngFor="let card of cards" class="col-6 md:col-4 lg:col-2 p-2">
+            <div class="p-card shadow-3 bg-green-400">
+                <img 
+                  src="/pruebalibro.jpg" 
+                  alt="Portada del libro" 
+                  class="w-full h-15rem border-round-top p-1" 
+                />
+                <div class="p-card-content p-3 pt-0">
+                  <div class="w-full mb-2 text-lg font-semibold text-800 white-space-nowrap overflow-hidden text-overflow-ellipsis">Título del libro</div>
+                  <div class="w-full text-sm text-gray-800 mb-3 white-space-nowrap overflow-hidden text-overflow-ellipsis">Autor del libro</div>
+                  <button 
+                    pButton
+                    type="button" 
+                    label="Ver más" 
+                    class="w-full border-none text-900 font-semibold bg-red-500 hover:bg-red-400"
+                  ></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

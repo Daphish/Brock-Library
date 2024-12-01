@@ -1,6 +1,6 @@
-<div class="card">
+<div class="card fixed w-full top-0 left-0 z-5 shadow-8 bg-green-400">
     <p-toolbar
-        styleClass="bg-green-400 shadow-8">
+        styleClass="bg-green-400">
         <ng-template pTemplate="start">
             <img class="logo" src="logo.png" />
         </ng-template>
@@ -18,5 +18,18 @@
             </div>
         </ng-template>
     </p-toolbar>
-    </div> 
-<router-outlet></router-outlet>
+    <div class="flex w-full bg-green-400 justify-content-center pb-2 gap-3 px-2">
+        <p-dropdown 
+        [options]="cities" 
+        [(ngModel)]="selectedCity" 
+        optionLabel="name"
+        placeholder="Select a City"/>
+        <p-iconField iconPosition="left" class="w-10">
+            <p-inputIcon styleClass="pi pi-search" />
+            <input type="text" pInputText placeholder="Busca un libro" class="w-full hover:border-red-500 custom-shadow"/>
+        </p-iconField>
+    </div>
+</div>
+<div class="content overflow-hidden">
+    <router-outlet></router-outlet>
+</div>
