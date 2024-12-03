@@ -13,8 +13,7 @@ class Server {
             ]
         };
 
-        this.usersPath = "/api/users";
-        this.tvShowsPath = "/api/tvshows";
+        this.booksPath = "/api/books";
         this.authPath = "/api/auth";
 
         this.middlewares();
@@ -23,8 +22,7 @@ class Server {
     }
 
     routes(){
-        this.app.use(this.tvShowsPath, require("../routes/tvshows"));
-        this.app.use(this.usersPath, require("../routes/user"));
+        this.app.use(this.booksPath, require("../routes/books"));
         this.app.use(this.authPath, require("../routes/auth"));
 
         this.app.get("*", function(req, res) {

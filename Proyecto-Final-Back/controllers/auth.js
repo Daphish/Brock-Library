@@ -1,5 +1,5 @@
 const { response, request } = require("express");
-const { UserRepository } = require("../repositorioes/user");
+const { UserRepository } = require("../repositories/user");
 const { Validations } = require("../helpers/validations");
 const bcrypt = require("bcrypt");
 const { generateJWT } = require("../helpers/jwt");

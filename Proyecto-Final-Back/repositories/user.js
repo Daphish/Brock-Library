@@ -2,10 +2,6 @@ const User = require("../models/user");
 
 class UserRepository{
 
-    static async getAll(query){
-        return await User.find(query);
-    }
-
     static async getOne(query){
         return await User.findOne(query);
     }
