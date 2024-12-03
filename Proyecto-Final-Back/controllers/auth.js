@@ -3,6 +3,7 @@ const { UserRepository } = require("../repositories/user");
 const { Validations } = require("../helpers/validations");
 const bcrypt = require("bcrypt");
 const { generateJWT } = require("../helpers/jwt");
+const { CartRepository } = require("../repositories/cart");
 
 const login = async (req = request, res = response) => {
     const { username, password } = req.body;
@@ -28,12 +29,14 @@ const login = async (req = request, res = response) => {
     }
 
     try{
+        const cart = await CartRepository.getById(user._id);
         const { password: _, ...simpleUser } = user.toObject();
         const token = await generateJWT(username);
         res.status(200).json({
             msg: "Login OK",
             token: token,
-            user: simpleUser
+            user: simpleUser,
+            cart: cart
         })
     }catch(error){
         console.log(error);
@@ -78,10 +81,15 @@ const register = async (req = request, res= response)=>{
             id: newUser._id
         } */
 
+        await CartRepository.create({
+            userId : newUser._id,
+            items: []
+        })
+
         const { password: _, ...simpleUser } = newUser.toObject();
 
         res.status(200).json({
-            msg: "Usuario creado",
+            msg: "Usuario y carrito creados",
             user: simpleUser
         });
     } catch(error){

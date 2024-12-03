@@ -1,6 +1,7 @@
 const { response, request } = require("express");
 const Book = require("../models/book");
 const { BookRepository } = require("../repositories/book");
+const { ReviewRepository } = require("../repositories/review");
 
 const getAllBooks = async (req = request, res = response) => {
     const { searchTerm } = req.query;
@@ -27,7 +28,11 @@ const getBookById = async (req = request, res = response) => {
             });
             return;
         }
-        res.status(200).json(result);
+        const reviews = await ReviewRepository.getById(id);
+        res.status(200).json({
+            book: result,
+            reviews: reviews
+        });
     }catch(error){
         console.log(error);
         res.status(500).json({
@@ -79,9 +84,17 @@ const deleteBook = async (req = request, res = response) => {
 
 const updateBook = async (req = request, res = response) => {
     const { id } = req.params;
+    const { name, year, image, description, genre, editorial, author } = req.body;
+    const bookData = { name, year, image, description, genre, editorial, author };
+
+    if( !name || !year || !image || !description || !genre || !editorial || !author){
+        res.status(400).json({
+            msg: "Información incompleta"
+        });
+    }
 
     try{
-        const result = await BookRepository.updateById(id);
+        const result = await BookRepository.updateById(id, bookData);
         if(result === null){
             res.status(404).json({
                 msg: "No se encontró el libro"
