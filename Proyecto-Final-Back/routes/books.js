@@ -6,12 +6,12 @@ const router = Router();
 
 router.get("/", getAllBooks);
 
-router.get("/:id", [validateJWT, verifyAdminRole], getBookById);
+router.get("/:id", getBookById);
 
-router.post("/", createNewBook);
+router.post("/", [validateJWT, verifyAdminRole], createNewBook);
 
-router.delete("/:id", deleteBook);
+router.delete("/:id", [validateJWT, verifyAdminRole], deleteBook);
 
-router.put("/:id", updateBook);
+router.put("/:id", [validateJWT, verifyAdminRole], updateBook);
 
 module.exports = router;

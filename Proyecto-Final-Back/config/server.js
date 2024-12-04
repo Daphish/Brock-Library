@@ -15,6 +15,8 @@ class Server {
 
         this.booksPath = "/api/books";
         this.authPath = "/api/auth";
+        this.cartPath = "/api/cart";
+        this.reviewsPath = "/api/reviews";
 
         this.middlewares();
         this.routes();
@@ -24,6 +26,8 @@ class Server {
     routes(){
         this.app.use(this.booksPath, require("../routes/books"));
         this.app.use(this.authPath, require("../routes/auth"));
+        this.app.use(this.cartPath, require("../routes/cart"));
+        this.app.use(this.reviewsPath, require("../routes/reviews"));
 
         this.app.get("*", function(req, res) {
             res.status(404).json({
