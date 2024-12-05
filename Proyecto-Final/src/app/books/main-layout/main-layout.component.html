@@ -54,7 +54,8 @@
     <div class="flex w-full bg-green-400 justify-content-center pb-2 gap-3 px-2">
         <p-dropdown 
         [options]="genres" 
-        [(ngModel)]="selectedGenre" 
+        [(ngModel)]="selectedGenre"
+        (onChange)="filterBooks()"
         optionLabel="name"
         placeholder="Género"/>
         <p-iconField iconPosition="left" class="w-10">

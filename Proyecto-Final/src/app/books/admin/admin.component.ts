@@ -67,7 +67,6 @@ public get books(): Book[]{
 saveBook() {
   this.booksService.updateBook(this.selectedBook!, this.selectedBook!._id!)
   this.isEditDialogVisible = false;
-  console.log(this.booksService.books);
 }
 
 addBook() {

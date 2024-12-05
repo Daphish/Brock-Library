@@ -2,7 +2,7 @@
     <div class="w-10 text-center font-bold text-6xl mt-3">Vista de libros</div>
     <button (click)="openAddDialog()" pButton pRipple label="Añadir libro" class="w-10rem my-3 border-none text-900 font-semibold bg-red-500 hover:bg-red-400"></button>
     <div class="w-10">
-        <p-table [value]="books" [paginator]="true" [rows]="10" [responsive]="true">
+        <p-table [value]="books" [paginator]="true" [rows]="5" [responsive]="true">
             <ng-template pTemplate="header">
                 <tr>
                     <th class="bg-green-400">Imagen</th>

@@ -86,7 +86,6 @@ const updateBook = async (req = request, res = response) => {
     const { id } = req.params;
     const { name, year, image, description, genre, editorial, author } = req.body;
     const bookData = { name, year, image, description, genre, editorial, author };
-    console.log(bookData);
 
     if( !name || !year || !image || !description || !genre || !editorial || !author){
         return res.status(400).json({

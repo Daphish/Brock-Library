@@ -28,7 +28,6 @@ const updateCart = async (req = request, res = response) => {
         } else {
             cart.items.push({ bookId, quantity });
         }
-        console.log(cart);
         const result = await CartRepository.updateById(userId, cart);
         if(result === null){
             res.status(404).json({

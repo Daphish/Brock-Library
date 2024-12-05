@@ -31,6 +31,10 @@ export class DetallesComponent {
   quantity: number = 1;
 
     ngOnInit() {
+        const role = localStorage.getItem('role');
+        if(role === "admin"){
+          this.admin = true;
+        }
         const bookId = this.route.snapshot.paramMap.get('id');
         this.primengConfig.ripple = true;
         this.booksService.getBookById(bookId!);
@@ -71,5 +75,9 @@ export class DetallesComponent {
       } else {
         this.router.navigate(['/auth/login']);
       }
+    }
+
+    public deleteReview(id: string){
+      this.booksService.deleteReview(id);
     }
 }

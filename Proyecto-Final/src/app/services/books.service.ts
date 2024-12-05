@@ -61,8 +61,6 @@ import { HttpClient } from '@angular/common/http';
     public getBookById(id: string): void {
         this.http.get<{ book: Book; reviews: Review[] }>(`${this.apiUrlBooks}/${id}`).subscribe({
             next: (response) => {
-                console.log('Libro obtenido:', response.book);
-                console.log('Reseñas del libro:', response.reviews);
                 this._detailedBook = response.book;
                 this._reviews = response.reviews;
             },
@@ -73,8 +71,11 @@ import { HttpClient } from '@angular/common/http';
     }
 
     public filterBooks(genre: string): void{
-
-        this._books = this._books.filter(book => book.genre === genre);
+        this._filteredBooks = this._books;
+        if(genre === "Todos"){
+            return;
+        }
+        this._filteredBooks = this._filteredBooks.filter(book => book.genre === genre);
     }
 
     public searchBooks(query: string): void{

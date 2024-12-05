@@ -16,7 +16,7 @@ import { RippleModule } from 'primeng/ripple';
 import { PrimeNGConfig } from 'primeng/api';
 
 interface Genre {
-  name: String
+  name: string
 }
 
 @Component({
@@ -40,7 +40,7 @@ export class MainLayoutComponent {
 
   query: string = "";
 
-  selectedGenre: Genre | undefined;
+  selectedGenre: Genre = { name: "Todos" } ;
 
   ngOnInit() {
       this.primengConfig.ripple = true;
@@ -49,11 +49,13 @@ export class MainLayoutComponent {
         this.admin = true;
       }
       this.genres = [
+          {name: "Todos"},
           {name: "Suspenso"},
           {name: "Drama"},
           {name: "Infantil"},
           {name: "Autoayuda"},
-          {name: "Fantasía"}
+          {name: "Fantasía"},
+          {name: "Novela"}
       ];
   }
 
@@ -80,5 +82,13 @@ export class MainLayoutComponent {
 
   public busca(){
     this.bookServices.searchBooks(this.query);
+  }
+
+  public filterBooks(){
+    if(this.selectedGenre && this.selectedGenre.name){
+      this.bookServices.filterBooks(this.selectedGenre.name);
+    } else {
+      this.bookServices.fetchBooks();
+    }
   }
 }

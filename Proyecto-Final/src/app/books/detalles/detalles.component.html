@@ -1,6 +1,6 @@
 <div class="w-screen flex align-items-center flex-column pb-3 overflow-y-auto">
-    <div class="w-9 flex align-items-center gap-2">
-        <div class="w-8 pt-5">
+    <div class="w-9 flex flex-column md:flex-row align-items-center gap-2">
+        <div class="w-12 md:w-8 pt-5">
             <div *ngIf="detailedBook" class="w-full h-20rem flex gap-4">
                 <img
                     [src]="detailedBook.image"
@@ -33,11 +33,14 @@
         <div class="text-900 font-semibold text-xl border-bottom-1 border-red-500">Comentarios</div>
     </div>
     <div class="w-9 mt-3 flex flex-column align-items-center">
-        <div *ngFor="let review of reviews" class="w-full border-round-lg bg-green-400 p-2 mb-3">
-            <div class="w-100 text-base text-800">
+        <div *ngFor="let review of reviews" class="w-full flex border-round-lg bg-green-400 p-2 mb-3 align-items-center">
+            <div class="w-full text-base text-800">
                 <p class="text-xl text-800 mt-0">{{review.username}}</p>
                 {{review.comment}}
             </div>
+            <button (click)="deleteReview(review._id!)" *ngIf="admin" pButton pRipple label="X" class="border-circle border-none text-900 font-semibold bg-red-500 hover:bg-red-400 px-2 h-2rem">
+
+            </button>
         </div>
         <input id="user1" type="text" placeholder="Escribe un comentario" pInputText class="w-full mb-3 hover:border-red-500 focus:border-red-500 custom-shadow" [(ngModel)]="comment">
         <button (click)="addReview()" pButton pRipple label="Publicar" class="w-5 margen-izq border-none text-900 font-semibold bg-red-500 hover:bg-red-400"></button>

@@ -44,7 +44,6 @@ const createReview = async (req = request, res = response) => {
 
     try{
         const savedReview = await ReviewRepository.create(reviewData);
-        console.log(savedReview);
         res.status(201).json(savedReview)
     } catch(error){
         console.log(error);
