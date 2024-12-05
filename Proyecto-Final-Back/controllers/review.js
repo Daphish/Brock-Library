@@ -1,5 +1,6 @@
 const { response, request } = require("express");
 const Review = require("../models/review");
+const User = require("../models/user");
 const { ReviewRepository } = require("../repositories/review");
 
 const deleteReview = async (req = request, res = response) => {
@@ -23,24 +24,27 @@ const deleteReview = async (req = request, res = response) => {
 }
 
 const createReview = async (req = request, res = response) => {
-    const { id } = req.params;
+    const { bookId } = req.params;
     const { comment } = req.body;
     const userId = req.userActive._id;
+    const username = req.userActive.username;
 
     if(!comment){
-        res.status(400).json({
+        return res.status(400).json({
             msg: "Información incompleta"
         });
     }
 
     const reviewData = {
         userId: userId,
-        bookId: id,
+        username: username,
+        bookId: bookId,
         comment: comment
     }
 
     try{
         const savedReview = await ReviewRepository.create(reviewData);
+        console.log(savedReview);
         res.status(201).json(savedReview)
     } catch(error){
         console.log(error);

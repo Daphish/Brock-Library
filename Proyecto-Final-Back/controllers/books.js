@@ -46,7 +46,7 @@ const createNewBook = async (req = request, res = response) => {
     const bookData = { name, year, image, description, genre, editorial, author };
 
     if( !name || !year || !image || !description || !genre || !editorial || !author){
-        res.status(400).json({
+        return res.status(400).json({
             msg: "Información incompleta"
         });
     }
@@ -86,9 +86,10 @@ const updateBook = async (req = request, res = response) => {
     const { id } = req.params;
     const { name, year, image, description, genre, editorial, author } = req.body;
     const bookData = { name, year, image, description, genre, editorial, author };
+    console.log(bookData);
 
     if( !name || !year || !image || !description || !genre || !editorial || !author){
-        res.status(400).json({
+        return res.status(400).json({
             msg: "Información incompleta"
         });
     }
@@ -101,7 +102,8 @@ const updateBook = async (req = request, res = response) => {
             });
             return;
         }
-        res.status(200).json(result);
+        const updatedBooks = await BookRepository.getAll();
+        res.status(200).json(updatedBooks);
     } catch(error) {
         console.log(error);
         res.status(500).json({

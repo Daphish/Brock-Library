@@ -1,0 +1,108 @@
+<div class="w-screen flex align-items-center flex-column pb-3 overflow-y-auto">
+    <div class="w-10 text-center font-bold text-6xl mt-3">Vista de libros</div>
+    <button (click)="openAddDialog()" pButton pRipple label="Añadir libro" class="w-10rem my-3 border-none text-900 font-semibold bg-red-500 hover:bg-red-400"></button>
+    <div class="w-10">
+        <p-table [value]="books" [paginator]="true" [rows]="10" [responsive]="true">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="bg-green-400">Imagen</th>
+                    <th class="bg-green-400">Nombre</th>
+                    <th class="bg-green-400">Año</th>
+                    <th class="bg-green-400">Descripcion</th>
+                    <th class="bg-green-400">Genero</th>
+                    <th class="bg-green-400">Editorial</th>
+                    <th class="bg-green-400">Autor</th>
+                    <th class="bg-green-400">Opciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-book>
+                <tr>
+                    <td><img [src]="book.image" class="w-10rem h-12rem object-cover" /></td>
+                    <td>{{ book.name }}</td>
+                    <td>{{ book.year }}</td>
+                    <td class="text-overflow-ellipsis">{{ book.description }}</td>
+                    <td>{{ book.genre }}</td>
+                    <td>{{ book.editorial }}</td>
+                    <td>{{ book.author }}</td>
+                    <td class="justify-content-between align-items-center">
+                        <button (click)="openEditDialog(book)" pButton pRipple icon="pi pi-pencil" class="w-5 mr-1 border-none text-900 font-semibold bg-yellow-500 hover:bg-red-400"></button>
+                        <button (click)="deleteBook(book)" pButton pRipple icon="pi pi-trash" class="w-5 border-none text-900 font-semibold bg-red-500 hover:bg-red-400"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+    <p-dialog [style]="{width: '40vw', backgroundColor: 'var(--green-400)'}" [(visible)]="isEditDialogVisible" header="Editar Libro" [modal]="true" [closable]="true" [dismissableMask]="true">
+        <form class="w-10 py-2" (ngSubmit)="saveBook()">
+            <div class="field">
+                <label for="name">Nombre</label>
+                <input class="custom-shadow w-full" id="name" type="text" pInputText [(ngModel)]="selectedBook.name!" name="name" />
+            </div>
+            <div class="field">
+                <label for="name">Imagen</label>
+                <input class="custom-shadow w-full" id="name" type="text" pInputText [(ngModel)]="selectedBook.image!" name="image" />
+            </div>
+            <div class="field">
+                <label for="year">Año</label>
+                <input class="custom-shadow w-full" id="year" type="number" pInputText [(ngModel)]="selectedBook.year" name="year" />
+            </div>
+            <div class="field">
+                <label for="description">Descripción</label>
+                <textarea class="custom-shadow w-full" id="description" pInputTextarea [(ngModel)]="selectedBook.description" name="description"></textarea>
+            </div>
+            <div class="field">
+                <label for="genre">Género</label>
+                <input class="custom-shadow w-full" id="genre" type="text" pInputText [(ngModel)]="selectedBook.genre" name="genre" />
+            </div>
+            <div class="field">
+                <label for="editorial">Editorial</label>
+                <input class="custom-shadow w-full" id="editorial" type="text" pInputText [(ngModel)]="selectedBook.editorial" name="editorial" />
+            </div>
+            <div class="field">
+                <label for="author">Autor</label>
+                <input class="custom-shadow w-full" id="author" type="text" pInputText [(ngModel)]="selectedBook.author" name="author" />
+            </div>
+            <div class="flex justify-content-center mt-3">
+                <button pButton label="Guardar" icon="pi pi-check" class="mr-2 border-none text-900 font-semibold bg-red-500 hover:bg-red-400" type="submit"></button>
+                <button pButton label="Cancelar" icon="pi pi-times" class="border-none text-900 font-semibold bg-red-500 hover:bg-red-400" type="button" (click)="isEditDialogVisible = false"></button>
+            </div>
+        </form>
+    </p-dialog>
+    <p-dialog [style]="{width: '40vw', backgroundColor: 'var(--green-400)'}" [(visible)]="isAddDialogVisible" header="Añadir Libro" [modal]="true" [closable]="true" [dismissableMask]="true">
+        <form class="w-10 py-2" (ngSubmit)="addBook()">
+            <div class="field">
+                <label for="name">Nombre</label>
+                <input class="custom-shadow w-full" id="name" type="text" pInputText [(ngModel)]="initialBook.name!" name="name" />
+            </div>
+            <div class="field">
+                <label for="name">Imagen</label>
+                <input class="custom-shadow w-full" id="name" type="text" pInputText [(ngModel)]="initialBook.image!" name="image" />
+            </div>
+            <div class="field">
+                <label for="year">Año</label>
+                <input class="custom-shadow w-full" id="year" type="number" pInputText [(ngModel)]="initialBook.year" name="year" />
+            </div>
+            <div class="field">
+                <label for="description">Descripción</label>
+                <textarea class="custom-shadow w-full" id="description" pInputTextarea [(ngModel)]="initialBook.description" name="description"></textarea>
+            </div>
+            <div class="field">
+                <label for="genre">Género</label>
+                <input class="custom-shadow w-full" id="genre" type="text" pInputText [(ngModel)]="initialBook.genre" name="genre" />
+            </div>
+            <div class="field">
+                <label for="editorial">Editorial</label>
+                <input class="custom-shadow w-full" id="editorial" type="text" pInputText [(ngModel)]="initialBook.editorial" name="editorial" />
+            </div>
+            <div class="field">
+                <label for="author">Autor</label>
+                <input class="custom-shadow w-full" id="author" type="text" pInputText [(ngModel)]="initialBook.author" name="author" />
+            </div>
+            <div class="flex justify-content-center mt-3">
+                <button pButton label="Guardar" icon="pi pi-check" class="mr-2 border-none text-900 font-semibold bg-red-500 hover:bg-red-400" type="submit"></button>
+                <button pButton label="Cancelar" icon="pi pi-times" class="border-none text-900 font-semibold bg-red-500 hover:bg-red-400" type="button" (click)="isAddDialogVisible = false"></button>
+            </div>
+        </form>
+    </p-dialog>
+</div>

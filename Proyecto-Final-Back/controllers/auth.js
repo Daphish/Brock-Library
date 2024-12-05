@@ -16,14 +16,14 @@ const login = async (req = request, res = response) => {
 
     const user = await UserRepository.getOne({ username: username });
     if(!user){
-        res.status(401).json({
+        return res.status(401).json({
             msg: "Usuario y/o contraseña inválidos"
         });
     }
 
     const validPassword = await bcrypt.compare(password, user.password);
     if(!validPassword){
-        res.status(401).json({
+        return res.status(401).json({
             msg: "Usuario y/o contraseña inválidos"
         });
     }
@@ -63,7 +63,7 @@ const register = async (req = request, res= response)=>{
     try{
         const user = await UserRepository.getOne({ username: username});
         if(user){
-            res.status(400).json({
+            return res.status(400).json({
                 msg: "username ya existente"
             });
         }

@@ -1,0 +1,29 @@
+::ng-deep .field{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.p-inputtext:enabled:hover{
+    border-color: var(--red-500);
+}
+
+.p-inputtext:enabled:focus{
+    border-color: var(--red-500);
+}
+
+::ng-deep .p-dialog-header{
+    background-color: var(--green-400);
+}
+
+::ng-deep .p-dialog-content{
+    display: flex;
+    justify-content: center;
+    background-color: var(--green-400);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.p-datatable-thead{
+    background-color: var(--green-400) !important;
+}

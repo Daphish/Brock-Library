@@ -1,4 +1,5 @@
 const Cart = require("../models/cart");
+const ObjectId = require("mongoose").Types.ObjectId;
 
 class CartRepository {
 
@@ -6,7 +7,7 @@ class CartRepository {
         if(!ObjectId.isValid(id)){
             return null;
         }
-        return await Cart.findOne({ userId: id })
+        return await Cart.findOne({ userId: id }).populate('items.bookId');
     }
 
     static async create(cartData){

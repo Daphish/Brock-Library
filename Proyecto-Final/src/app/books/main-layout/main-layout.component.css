@@ -31,3 +31,28 @@
 ::ng-deep .p-multiselect-header{
     display: none;
 }
+
+.list-none {
+    list-style: none !important;
+}
+
+.surface-overlay {
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    display: none;
+  }
+  
+  .menu-open {
+    opacity: 1;
+    transform: scaleY(1);
+    display: block;
+  }
+  
+  .menu-closed {
+    opacity: 0;
+    transform: scaleY(0);
+    display: none;
+  }
+  
